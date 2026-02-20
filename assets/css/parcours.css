@@ -1,0 +1,314 @@
+.parcours-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.parcours-list::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #00d9ff, #10b981);
+    opacity: 0.3;
+}
+
+.parcours-list li {
+    margin-bottom: 3rem;
+    position: relative;
+    padding-left: 3rem;
+    animation: fadeInLeft 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.parcours-list li:nth-child(1) { animation-delay: 0.2s; }
+.parcours-list li:nth-child(2) { animation-delay: 0.4s; }
+.parcours-list li:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.date {
+    background: linear-gradient(135deg, #00d9ff 0%, #10b981 100%);
+    color: #0f172a;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.parcours-content {
+    background: rgba(30, 41, 59, 0.4);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parcours-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 217, 255, 0.15);
+    border-color: rgba(0, 217, 255, 0.3);
+}
+
+.parcours-content h4 {
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.parcours-content p {
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.parcours-content ul {
+    list-style: none;
+    padding-left: 0.5rem;
+    display: grid;
+    gap: 0.8rem;
+}
+
+.parcours-content ul li {
+    color: #94a3b8;
+    margin: 0;
+    padding-left: 1.8rem;
+    position: relative;
+    line-height: 1.5;
+    animation: none;
+    opacity: 1;
+}
+
+.parcours-content ul li::before {
+    content: "▸";
+    color: #00d9ff;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    transition: transform 0.2s ease;
+}
+
+.parcours-content ul li:hover::before {
+    transform: translateX(5px);
+    color: #10b981;
+}
+
+/* Styles pour la timeline de parcours */
+.parcours-section {
+    padding: 4rem 0;
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.parcours-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #e2e8f0;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.slash {
+    color: #00d9ff;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.parcours-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.parcours-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #00d9ff, #10b981);
+    transform: translateX(-50%);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00d9ff 0%, #10b981 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
+    flex-shrink: 0;
+    margin: 0 2rem;
+}
+
+.timeline-item.active .timeline-badge {
+    background: linear-gradient(135deg, #10b981 0%, #00d9ff 100%);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.timeline-content {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.6);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 217, 255, 0.2);
+    border-color: rgba(0, 217, 255, 0.4);
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.year {
+    background: linear-gradient(135deg, #00d9ff 0%, #10b981 100%);
+    color: #0f172a;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.timeline-header h3 {
+    color: #e2e8f0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.timeline-body h4 {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-body p {
+    color: #94a3b8;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .parcours-list::before {
+        left: 15px;
+    }
+    
+    .parcours-list li {
+        padding-left: 2rem;
+    }
+    
+    .parcours-content {
+        padding: 1.5rem;
+    }
+    
+    .date {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .parcours-content h4 {
+        font-size: 1.2rem;
+    }
+    
+    .parcours-content p {
+        font-size: 1rem;
+    }
+    
+    .parcours-timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+        padding-left: 4rem;
+    }
+    
+    .timeline-badge {
+        position: absolute;
+        left: 0;
+        margin: 0;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+    }
+    
+    .parcours-title {
+        font-size: 2rem;
+    }
+}

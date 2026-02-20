@@ -1,0 +1,410 @@
+/* Reset pour la page veille informatique */
+body.veille-page {
+    font-family: 'Courier New', 'VT323', monospace;
+    background: #000;
+    color: #00ff41;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Scanlines CRT effect */
+body.veille-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.98; }
+}
+
+body.veille-page {
+    animation: flicker 0.15s infinite;
+}
+
+/* Navbar style terminal */
+.veille-navbar {
+    background: #000;
+    border-bottom: 2px solid #00ff41;
+    padding: 1rem 2rem;
+    font-family: 'Courier New', monospace;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 255, 65, 0.3);
+}
+
+.veille-navbar .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.veille-navbar .nav-logo h2 {
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    margin: 0;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.veille-navbar .nav-logo h2::before {
+    content: '> ';
+    color: #00ff41;
+}
+
+.veille-navbar .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.veille-navbar .nav-link {
+    color: #00ff41;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.veille-navbar .nav-link:hover,
+.veille-navbar .nav-link.active {
+    border-color: #00ff41;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    background: rgba(0, 255, 65, 0.1);
+}
+
+/* Container principal */
+.veille-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    color: #00ff41;
+}
+
+/* Titres avec effet typewriter */
+.typewriter-title {
+    font-size: 2.5rem;
+    color: #00ff41;
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    overflow: hidden;
+    border-right: 3px solid #00ff41;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #00ff41; }
+}
+
+/* Curseur clignotant */
+.cursor-blink {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background: #00ff41;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    vertical-align: baseline;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Sections */
+.veille-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+.veille-section h2 {
+    color: #00ff41;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #00ff41;
+    border-bottom: 2px solid #00ff41;
+    padding-bottom: 0.5rem;
+}
+
+.veille-section h3 {
+    color: #00ff41;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Timeline rétro */
+.retro-timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin: 2rem 0;
+}
+
+.retro-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #00ff41;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.timeline-entry {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.timeline-entry::before {
+    content: '■';
+    position: absolute;
+    left: -1.5rem;
+    color: #00ff41;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.timeline-year {
+    color: #ffb000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    text-shadow: 0 0 10px #ffb000;
+}
+
+.timeline-event {
+    color: #00ff41;
+    display: inline;
+}
+
+/* Cartes machines mythiques */
+.machines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.machine-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff41;
+    padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    transition: all 0.3s ease;
+}
+
+.machine-card:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+    transform: translateY(-5px);
+}
+
+.machine-card h4 {
+    color: #ffb000;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px #ffb000;
+    border-bottom: 1px solid #00ff41;
+    padding-bottom: 0.5rem;
+}
+
+.machine-card .machine-year {
+    color: #00ff41;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.machine-card .machine-desc {
+    color: #00ff41;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.machine-card .machine-specs {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 255, 65, 0.3);
+}
+
+.machine-card .spec-item {
+    color: #94ff94;
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+
+.machine-card .spec-item::before {
+    content: '> ';
+    color: #00ff41;
+}
+
+/* Pionniers */
+.pioneers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.pioneer-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00ff41;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+.pioneer-card h4 {
+    color: #ffb000;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px #ffb000;
+}
+
+.pioneer-card .pioneer-role {
+    color: #00ff41;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.pioneer-card .pioneer-desc {
+    color: #94ff94;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Easter egg */
+.easter-egg {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    border: 3px solid #00ff41;
+    padding: 2rem;
+    z-index: 10000;
+    box-shadow: 0 0 50px rgba(0, 255, 65, 0.8);
+    text-align: center;
+    max-width: 500px;
+}
+
+.easter-egg.active {
+    display: block;
+    animation: terminal-appear 0.5s ease;
+}
+
+@keyframes terminal-appear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.easter-egg h3 {
+    color: #00ff41;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.easter-egg p {
+    color: #00ff41;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.easter-egg .close-btn {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background: transparent;
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.easter-egg .close-btn:hover {
+    background: rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .veille-navbar .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .typewriter-title {
+        font-size: 1.8rem;
+    }
+    
+    .machines-grid,
+    .pioneers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .veille-container {
+        padding: 5rem 1rem 2rem;
+    }
+}
+
+/* Glitch effect optionnel */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.glitch-text {
+    animation: glitch 0.3s infinite;
+}

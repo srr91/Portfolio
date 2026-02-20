@@ -1,0 +1,285 @@
+/* Page Contact - Styles dédiés respectant le thème du site */
+
+.contact-page {
+    position: relative;
+}
+
+/* Grille de fond (thème veille / site) */
+.contact-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.contact-page .container,
+.contact-page .contact-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Contact */
+.contact-header h1 {
+    font-family: 'JetBrains Mono', monospace !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-header .terminal-prefix {
+    color: #10b981;
+}
+
+.contact-header p {
+    max-width: 600px;
+}
+
+/* Section Contact */
+.contact-section {
+    padding: 60px 0 120px !important;
+}
+
+.contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Carte principale hero */
+.contact-hero-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(0, 217, 255, 0.25);
+    border-radius: 20px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 217, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+.contact-hero-card:hover {
+    border-color: rgba(0, 217, 255, 0.4);
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(0, 217, 255, 0.08);
+}
+
+.contact-hero-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.hero-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(16, 185, 129, 0.2));
+    border: 1px solid rgba(0, 217, 255, 0.4);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #00d9ff;
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.15);
+}
+
+.contact-hero-content h2 {
+    font-size: 1.8rem;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.contact-hero-content p {
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.contact-cta i {
+    font-size: 1rem;
+}
+
+/* Grille des cartes de contact */
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.contact-card:hover {
+    border-color: rgba(0, 217, 255, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.1);
+}
+
+.contact-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.contact-card-link:hover {
+    color: #e2e8f0;
+}
+
+.contact-card-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.25rem;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid rgba(0, 217, 255, 0.25);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #00d9ff;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+    background: rgba(0, 217, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+.contact-card h3 {
+    font-size: 1.1rem;
+    color: #00d9ff;
+    margin-bottom: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+.contact-card p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Section réseaux sociaux */
+.contact-social-section {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.contact-social-section h3 {
+    font-size: 1.3rem;
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.contact-social-section h3 i {
+    color: #00d9ff;
+}
+
+.social-links-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 2rem;
+    min-width: 140px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    border-radius: 16px;
+    text-decoration: none;
+    color: #cbd5e1;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-link-card i {
+    font-size: 2rem;
+    color: #00d9ff;
+    transition: all 0.3s ease;
+}
+
+.social-link-card:hover {
+    border-color: rgba(0, 217, 255, 0.5);
+    color: #e2e8f0;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
+}
+
+.social-link-card:hover i {
+    color: #00d9ff;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-hero-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 1.5rem;
+    }
+
+    .contact-hero-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links-grid {
+        flex-direction: column;
+    }
+
+    .social-link-card {
+        width: 100%;
+    }
+}

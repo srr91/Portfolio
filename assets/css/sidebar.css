@@ -1,0 +1,215 @@
+/* Barre de navigation horizontale - Style dev.portfolio */
+
+:root {
+    --nav-height: 72px;
+    --nav-bg: #0a0e17;
+    --nav-text: #e2e8f0;
+    --nav-text-muted: #94a3b8;
+    --nav-accent: #00d9ff;
+    --nav-green: #10b981;
+}
+
+/* Layout avec navbar horizontale */
+body.has-sidebar {
+    min-height: 100vh;
+}
+
+/* Barre horizontale fixe en haut */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--nav-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+}
+
+/* Logo à gauche */
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: none;
+}
+
+.sidebar-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--nav-accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.sidebar-logo::before {
+    content: '$';
+    color: var(--nav-green);
+    margin-right: 0.25rem;
+}
+
+.sidebar-avatar,
+.sidebar-name,
+.sidebar-linkedin,
+.profile-info {
+    display: none;
+}
+
+/* Navigation horizontale au centre */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0 2rem;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.sidebar-nav li {
+    margin: 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0.5rem 0;
+    color: var(--nav-text-muted);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.sidebar-nav a i {
+    display: none;
+}
+
+.sidebar-nav a:hover {
+    color: var(--nav-accent);
+}
+
+.sidebar-nav a.active {
+    color: var(--nav-accent);
+    font-weight: 600;
+}
+
+.sidebar-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--nav-accent);
+}
+
+/* Footer/copyright à droite - masqué */
+.sidebar-footer {
+    display: none;
+}
+
+/* Contenu principal - full width avec padding top */
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    padding-top: var(--nav-height);
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Sections */
+body.has-sidebar .hero,
+body.has-sidebar section {
+    padding-top: 2rem;
+}
+
+body.has-sidebar .page-header {
+    padding-top: 3rem;
+}
+
+body.has-sidebar .navbar {
+    display: none;
+}
+
+/* Masquer le toggle desktop */
+.sidebar-toggle {
+    display: none;
+}
+
+/* Responsive tablette */
+@media (max-width: 1200px) {
+    .sidebar-nav ul {
+        gap: 1rem;
+    }
+    
+    .sidebar-nav a {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive mobile */
+@media (max-width: 992px) {
+    .sidebar {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: var(--nav-height);
+        padding: 0.75rem 1rem;
+    }
+    
+    .sidebar-nav {
+        order: 2;
+        width: 100%;
+        margin: 0.5rem 0 0;
+        padding: 0.5rem 0;
+        border-top: 1px solid rgba(51, 65, 85, 0.3);
+        overflow-x: auto;
+    }
+    
+    .sidebar-nav ul {
+        justify-content: flex-start;
+        gap: 1rem;
+        flex-wrap: nowrap;
+    }
+    
+    .main-content {
+        padding-top: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        padding: 0.75rem;
+    }
+    
+    .sidebar-nav ul {
+        gap: 0.75rem;
+    }
+    
+    .sidebar-nav a {
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+    
+    .main-content {
+        padding-top: 110px;
+    }
+}
