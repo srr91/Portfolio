@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique - Portfolio BTS SIO SLAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --neon-cyan: #00d9ff;
+            --neon-blue: #00b4d8;
+            --accent-purple: #7b2cbf;
+            --text-primary: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 217, 255, 0.3);
+            --shadow-glow: 0 0 30px rgba(0, 217, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Grille de fond */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navbar (intégrée au portfolio) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glow);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo h2 {
+            font-family: 'Sora', sans-serif;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--neon-cyan);
+        }
+
+        /* Hero section */
+        .veille-hero {
+            min-height: 45vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .veille-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .veille-hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .veille-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        /* Définition */
+        .veille-definition {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .veille-definition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .veille-definition h2 {
+            font-family: 'Sora', sans-serif;
+            color: var(--neon-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .veille-definition p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Axes container */
+        .veille-axes {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .veille-axes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Axe section */
+        .axe-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .axe-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .axe-section:nth-child(1) { transition-delay: 0.1s; }
+        .axe-section:nth-child(2) { transition-delay: 0.3s; }
+
+        .axe-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-glow);
+        }
+
+        .axe-header .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 180, 216, 0.1));
+            border: 1px solid var(--border-glow);
+            color: var(--neon-cyan);
+        }
+
+        .axe-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .axe-header .desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .axe-general .axe-header .icon { box-shadow: 0 0 25px rgba(0, 217, 255, 0.3); }
+        .axe-technique .axe-header .icon { box-shadow: 0 0 25px rgba(123, 44, 191, 0.3); }
+
+        .axe-technique .axe-header { border-bottom-color: rgba(123, 44, 191, 0.4); }
+        .axe-technique .axe-header .icon { 
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.2), rgba(123, 44, 191, 0.05));
+            border-color: rgba(123, 44, 191, 0.4);
+            color: #c77dff;
+        }
+
+        /* Cards grid */
+        .source-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .source-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .source-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .source-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-cyan);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .axe-technique .source-card:hover {
+            border-color: #c77dff;
+            box-shadow: 0 0 30px rgba(123, 44, 191, 0.2);
+        }
+
+        .source-card .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .badge-youtube {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 0, 0, 0.4);
+        }
+
+        .badge-google {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa94d;
+            border: 1px solid rgba(255, 165, 0, 0.4);
+        }
+
+        .badge-site {
+            background: rgba(0, 217, 255, 0.15);
+            color: var(--neon-cyan);
+            border: 1px solid var(--border-glow);
+        }
+
+        .source-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .source-card .category {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .veille-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .veille-footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .veille-footer a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+        }
+
+        .veille-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations au scroll */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .veille-hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .source-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .veille-definition {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="has-sidebar">
+    <aside class="sidebar">
+        <div class="sidebar-profile">
+            <a href="../index.html" class="sidebar-logo">dev.portfolio</a>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="bts-sio.html">BTS SIO</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="entreprise.html">Entreprise</a></li>
+                <li><a href="veille-informatique.html" class="active">Veille Informatique</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-content">
+    <!-- Hero -->
+    <header class="veille-hero">
+        <div>
+            <h1>Veille Technologique</h1>
+            <p class="subtitle">S'informer de façon systématique sur les techniques les plus récentes et leur mise à disposition commerciale</p>
+        </div>
+    </header>
+
+    <!-- Définition -->
+    <section class="veille-definition" id="definition">
+        <h2><i class="fas fa-book-open"></i> Définition</h2>
+        <p>
+            La veille technologique consiste à s'informer de façon systématique sur les techniques les plus récentes et surtout sur leur mise à disposition commerciale. 
+            Dans le cadre de mon BTS SIO option SLAM, je pratique une veille active sur deux axes complémentaires : les tendances grand public et les évolutions techniques professionnelles.
+        </p>
+    </section>
+
+    <!-- Deux axes -->
+    <div class="veille-axes">
+        <!-- Axe 1 : Veille générale -->
+        <section class="axe-section axe-general" id="axe-general">
+            <div class="axe-header">
+                <div class="icon"><i class="fas fa-chart-line"></i></div>
+                <div>
+                    <h2>Veille technologique générale</h2>
+                    <p class="desc">Tendances du marché, nouveaux OS, évolutions matérielles</p>
+                </div>
+            </div>
+            <div class="source-cards">
+                <div class="source-card" data-delay="0">
+                    <span class="badge badge-youtube"><i class="fab fa-youtube"></i> YouTube</span>
+                    <h3>Jojol</h3>
+                    <p class="category">Tendances tech grand public</p>
+                </div>
+                <div class="source-card" data-delay="3">
+                    <span class="badge badge-youtube"><i class="fab fa-youtube"></i> YouTube</span>
+                    <h3>Nightech</h3>
+                    <p class="category">Évolutions logicielles</p>
+                </div>
+                <div class="source-card" data-delay="5">
+                    <span class="badge badge-google"><i class="fas fa-bell"></i> Google Alertes</span>
+                    <h3>Le Monde Informatique</h3>
+                    <p class="category">Actualités tech</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Axe 2 : Veille technique -->
+        <section class="axe-section axe-technique" id="axe-technique">
+            <div class="axe-header">
+                <div class="icon"><i class="fas fa-code"></i></div>
+                <div>
+                    <h2>Veille technique et professionnelle</h2>
+                    <p class="desc">Développement, réseaux, cybersécurité</p>
+                </div>
+            </div>
+            <div class="source-cards">
+                <div class="source-card" data-delay="3">
+                    <span class="badge badge-youtube"><i class="fab fa-youtube"></i> YouTube</span>
+                    <h3>Micode</h3>
+                    <p class="category">Cybersécurité</p>
+                </div>
+                <div class="source-card" data-delay="5">
+                    <span class="badge badge-google"><i class="fas fa-bell"></i> Google Alertes</span>
+                    <h3>OpenClassrooms Blog</h3>
+                    <p class="category">Développement & formation</p>
+                </div>
+                <div class="source-card" data-delay="6">
+                    <span class="badge badge-site"><i class="fas fa-globe"></i> Site</span>
+                    <h3>Le Monde Informatique</h3>
+                    <p class="category">Google Alertes technique</p>
+    </main>
+                </div>
+            </div>
+    <!-- Footer -->
+        </section>
+    </div>
+
+    <footer class="veille-footer">
+        <p>Portfolio BTS SIO SLAM — Veille Technologique • Enzo Teixeira 2025</p>
+        <p><a href="../index.html">Retour à l'accueil</a></p>
+    </footer>
+    </main>
+
+    <script>
+        // Animations au scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -80px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Animer les cartes enfants avec délai échelonné
+                    const cards = entry.target.querySelectorAll('.source-card');
+                    cards.forEach((card, i) => {
+                        const delay = (card.dataset.delay || i) * 80;
+                        setTimeout(() => card.classList.add('visible'), 200 + delay);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.veille-definition, .axe-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

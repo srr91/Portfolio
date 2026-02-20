@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - BTS SIO</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="has-sidebar">
+    <aside class="sidebar">
+        <div class="sidebar-profile">
+            <a href="index.html" class="sidebar-logo">dev.portfolio</a>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="pages/apropos.html">À propos</a></li>
+                <li><a href="pages/bts-sio.html">BTS SIO</a></li>
+                <li><a href="pages/competences.html">Compétences</a></li>
+                <li><a href="pages/projets.html">Projets</a></li>
+                <li><a href="pages/entreprise.html">Entreprise</a></li>
+                <li><a href="pages/veille-informatique.html">Veille Informatique</a></li>
+                <li><a href="pages/cv.html">CV</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-content">
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Bienvenue dans mon portfolio! Je suis <span class="highlight">Enzo Teixeira</span></h1>
+                <h2>enzo@BTS_SIO:~$ whoami</h2>
+                <p>Étudiant BTS SIO en alternance chez GOOPY | Spécialisé en développement web | Rigoureux, motivé et ponctuel avec un goût pour l'apprentissage continu.</p>
+                <div class="hero-buttons">
+                    <a href="pages/projets.html" class="btn btn-primary">Voir mes projets</a>
+                    <a href="pages/contact.html" class="btn btn-secondary">Me contacter</a>
+                    <a href="pages/cv.html" class="btn btn-secondary">Mon CV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-pic">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">terminal</div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span>
+                                <span class="command">cat profile.json</span>
+                            </div>
+                            <div class="terminal-output">
+                                <div class="json-key">"name":</div>
+                                <div class="json-value">"Enzo Teixeira"</div>
+                                <div class="json-key">"formation":</div>
+                                <div class="json-array">["PHP/Laravel", "JavaScript", "MySQL"]</div>
+                                <div class="json-key">"status":</div>
+                                <div class="json-value">"Alternant GOOPY"</div>
+                            </div>
+                            <div class="terminal-cursor">_</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Présentation rapide -->
+    <section class="quick-intro">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Formation</h3>
+                    <p>BTS SIO 2ème année<br>Spécialisation SLAM</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Alternance</h3>
+                    <p>GOOPY - Paris<br>Développeur Web</p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Spécialité</h3>
+                    <p>Développement web<br></p>
+                </div>
+                <div class="intro-card">
+                    <i class="fas fa-target"></i>
+                    <h3>Objectif</h3>
+                    <p>Devenir expert<br>en informatique</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Navigation rapide -->
+    <section class="quick-nav">
+        <div class="container">
+            <h2 class="section-title">Découvrez mon parcours</h2>
+            <div class="nav-cards">
+                <a href="pages/apropos.html" class="nav-card">
+                    <i class="fas fa-user"></i>
+                    <h3>À propos</h3>
+                    <p>Mon parcours, mes motivations et mes objectifs professionnels</p>
+                </a>
+                <a href="pages/competences.html" class="nav-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Compétences</h3>
+                    <p>Technologies maîtrisées et niveau d'expertise</p>
+                </a>
+                <a href="pages/projets.html" class="nav-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Projets</h3>
+                    <p>Réalisations académiques et professionnelles</p>
+                </a>
+                <a href="pages/entreprise.html" class="nav-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Entreprise</h3>
+                    <p>Présentation de GOOPY et de mon rôle en alternance</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal CV -->
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="cv-image" src="assets/images/cv-enzo-teixeira.jpg" alt="CV Enzo Teixeira">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2025 Portfolio BTS SIO. Tous droits réservés.</p>
+                    <p>Développé par <strong>Enzo Teixeira</strong> - BTS SIO SLAM 2ème année</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Mentions Légales</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">
+                        Propriété intellectuelle : Ce portfolio est la propriété d'Enzo Teixeira.<br>
+                        Données personnelles : Les informations collectées sont utilisées uniquement pour répondre aux demandes de contact.<br>
+                        <a href="README.md" style="color: #00d9ff; text-decoration: none;">Documentation du projet</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">
+                        Email : <a href="mailto:enzoteixeira3@icloud.com" style="color: #00d9ff;">enzoteixeira3@icloud.com</a><br>
+                        Téléphone : 06.98.53.62.21<br>
+                        <a href="pages/contact.html" style="color: #00d9ff; text-decoration: none;">Page Contact</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </main>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

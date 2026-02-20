@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO - Portfolio BTS SIO</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/sidebar.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .slam-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d9ff 0%, #10b981 100%);
+            color: #0f172a;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .comparison-section {
+            padding: 4rem 0;
+        }
+        
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .comparison-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 2px solid rgba(0, 217, 255, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.4);
+        }
+        
+        .comparison-card.slam {
+            border-color: rgba(0, 217, 255, 0.5);
+            background: rgba(0, 217, 255, 0.05);
+        }
+        
+        .comparison-card.sisr {
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .card-header h3 {
+            font-size: 1.8rem;
+            color: #e2e8f0;
+            margin: 0;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #10b981 100%);
+            color: #0f172a;
+        }
+        
+        .comparison-card.sisr .card-icon {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-top: 1.5rem;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        
+        .row-label {
+            font-weight: 600;
+            color: #00d9ff;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .row-value {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        
+        .choice-section {
+            padding: 4rem 0;
+            background: rgba(15, 23, 42, 0.5);
+        }
+        
+        .choice-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .choice-reasons {
+            margin-top: 2rem;
+        }
+        
+        .reason-item {
+            background: rgba(30, 41, 59, 0.6);
+            border-left: 4px solid #00d9ff;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .reason-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0, 217, 255, 0.15);
+        }
+        
+        .reason-item h4 {
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .reason-item h4 i {
+            color: #00d9ff;
+        }
+        
+        .reason-item p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .comparison-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .slam-badge {
+                display: block;
+                margin: 1rem 0 0 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="has-sidebar">
+    <aside class="sidebar">
+        <div class="sidebar-profile">
+            <a href="../index.html" class="sidebar-logo">dev.portfolio</a>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="../index.html">Accueil</a></li>
+                <li><a href="apropos.html">À propos</a></li>
+                <li><a href="bts-sio.html" class="active">BTS SIO</a></li>
+                <li><a href="competences.html">Compétences</a></li>
+                <li><a href="projets.html">Projets</a></li>
+                <li><a href="entreprise.html">Entreprise</a></li>
+                <li><a href="veille-informatique.html">Veille Informatique</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-content">
+    <!-- Section Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">BTS SIO </h1>
+            <p class="page-subtitle">Découvrez le Brevet de Technicien Supérieur Services Informatiques aux Organisations</p>
+        </div>
+    </section>
+
+    <!-- Section 1 : C'est quoi le BTS SIO ? -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">C'est quoi le BTS SIO ?</h2>
+            <div class="about-content">
+                <div class="profile-section">
+                    <div class="profile-text">
+                        <p>Le <strong>BTS</strong> (Brevet de Technicien Supérieur) est un diplôme de niveau bac+2 qui se prépare en deux ans après le baccalauréat. C'est une formation professionnelle qui allie théorie et pratique, avec des stages ou une alternance en entreprise.</p>
+                        
+                        <p><strong>SIO</strong> signifie <strong>Services Informatiques aux Organisations</strong>. Cette formation est spécialement conçue pour former des techniciens capables de répondre aux besoins informatiques des entreprises, qu'il s'agisse de développement d'applications ou de gestion d'infrastructures.</p>
+                        
+                        <p>Le BTS SIO est une formation en <strong>2 ans post-bac</strong> orientée vers l'informatique professionnelle. Elle prépare les étudiants à intégrer rapidement le monde du travail avec des compétences techniques solides et une bonne compréhension des enjeux métier.</p>
+                        
+                        <h3 style="margin-top: 2rem; color: #00d9ff;">Deux grandes options au choix</h3>
+                        <p>En fin de première année, les étudiants doivent choisir entre deux spécialisations :</p>
+                        <ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
+                            <li style="padding: 0.8rem 0; border-bottom: 1px solid rgba(0, 217, 255, 0.1);">
+                                <i class="fas fa-code" style="color: #00d9ff; margin-right: 0.8rem;"></i>
+                                <strong style="color: #e2e8f0;">SLAM</strong> - Solutions Logicielles et Applications Métiers
+                            </li>
+                            <li style="padding: 0.8rem 0;">
+                                <i class="fas fa-server" style="color: #ff6b6b; margin-right: 0.8rem;"></i>
+                                <strong style="color: #e2e8f0;">SISR</strong> - Solutions d'Infrastructure, Systèmes et Réseaux
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 : Tableau comparatif SLAM vs SISR -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">SLAM vs SISR : Comparaison</h2>
+            <p style="text-align: center; color: #94a3b8; margin-bottom: 2rem;">Deux parcours, deux visions de l'informatique professionnelle</p>
+            
+            <div class="comparison-cards">
+                <!-- Carte SLAM -->
+                <div class="comparison-card slam">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>SLAM</h3>
+                    </div>
+                    <div class="comparison-table">
+                        <div class="comparison-row">
+                            <div class="row-label">Signification</div>
+                            <div class="row-value">Solutions Logicielles et Applications Métiers</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Focus</div>
+                            <div class="row-value">Développement d'applications, logiciels, web</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Débouchés</div>
+                            <div class="row-value">Développeur, chef de projet, intégrateur</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Matières clés</div>
+                            <div class="row-value">PHP, Python, SQL, HTML/CSS, POO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte SISR -->
+                <div class="comparison-card sisr">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>SISR</h3>
+                    </div>
+                    <div class="comparison-table">
+                        <div class="comparison-row">
+                            <div class="row-label">Signification</div>
+                            <div class="row-value">Solutions d'Infrastructure, Systèmes et Réseaux</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Focus</div>
+                            <div class="row-value">Réseaux, serveurs, sécurité, administration</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Débouchés</div>
+                            <div class="row-value">Admin réseau, technicien sys, responsable sécu</div>
+                        </div>
+                        <div class="comparison-row">
+                            <div class="row-label">Matières clés</div>
+                            <div class="row-value">Cisco, Active Directory, Linux Serveur, VLAN</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 : Pourquoi j'ai choisi SLAM -->
+    <section class="choice-section">
+        <div class="container">
+            <div class="choice-content">
+                <h2 class="section-title">Pourquoi j'ai choisi SLAM et pas SISR</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 2rem;">Un choix réfléchi basé sur mes passions, mes compétences et mes objectifs professionnels</p>
+                
+                <div class="choice-reasons">
+                    <div class="reason-item">
+                        <h4><i class="fas fa-paint-brush"></i> La création avant tout</h4>
+                        <p>J'ai toujours été attiré par la création : voir quelque chose prendre forme à partir de rien grâce au code. Il y a quelque chose de magique à transformer une idée en une application fonctionnelle, une interface en une expérience utilisateur fluide. Cette dimension créative, je ne la retrouvais pas dans SISR qui me semblait plus orienté vers la configuration et la maintenance.</p>
+                    </div>
+                    
+                    <div class="reason-item">
+                        <h4><i class="fas fa-balance-scale"></i> Logique et créativité combinées</h4>
+                        <p>Le développement web me permet de combiner logique et créativité, ce que je ne retrouvais pas dans SISR. D'un côté, je dois résoudre des problèmes techniques complexes avec une approche méthodique. De l'autre, je peux créer des interfaces élégantes, penser l'expérience utilisateur, et donner vie à des concepts. Cette dualité est ce qui me passionne le plus dans le développement.</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2025 Portfolio BTS SIO. Tous droits réservés.</p>
+                    <p>Développé par <strong>Enzo Teixeira</strong> - BTS SIO SLAM 2ème année</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Mentions Légales</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">
+                        Propriété intellectuelle : Ce portfolio est la propriété d'Enzo Teixeira.<br>
+                        Données personnelles : Les informations collectées sont utilisées uniquement pour répondre aux demandes de contact.<br>
+                        <a href="../README.md" style="color: #00d9ff; text-decoration: none;">Documentation du projet</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8;">
+                        Email : <a href="mailto:enzoteixeira3@icloud.com" style="color: #00d9ff;">enzoteixeira3@icloud.com</a><br>
+                        Téléphone : 06.98.53.62.21<br>
+                        <a href="contact.html" style="color: #00d9ff; text-decoration: none;">Page Contact</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </main>
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
